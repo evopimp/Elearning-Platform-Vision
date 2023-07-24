@@ -1,0 +1,163 @@
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#sidebar {
+    background-color: #4FB06D;
+    padding: 15px;
+    width: 200px;
+    height: 100vh;
+    box-sizing: border-box;
+    color: ghostwhite;
+    font-family: Arial, sans-serif; /* Change as per your preference */
+}
+
+/* Remove List Bullets */
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Box for each link with padding and rounded corners */
+#sidebar ul li {
+    background-color: ghostwhite;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Link Styling */
+#sidebar ul li a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    word-wrap: break-word;
+}
+
+/* Hover effect: Change color on hover */
+#sidebar ul li a:hover {
+    background-color: #83c4a5; /* Lighter shade of green */
+    color: white;
+    text-decoration: none;
+}
+
+/* Selected link effect: Change color on select */
+#sidebar ul li a:active {
+    background-color: #2e8054; /* Darker shade of green */
+    color: white;
+}
+
+#sidebar ul li a.selected {
+    background-color: #83c4a5; /* Lighter shade of green */
+    color: white;
+}
+
+
+#parent-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#post-content {
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    width: calc(100% - 290px - 15px);
+}
+
+#gpt-display {
+    
+    background-color: #253342;
+    padding: 2%;
+    width: 300px;
+    height: 100vh;
+    box-sizing: border-box;
+    position: fixed;
+    right: 0;
+    color: white;
+    overflow-y:auto;
+   
+    
+} 
+
+#message-box {
+    position: fixed;
+    right: 5px;
+    bottom: 10px;
+    width: 270px; /* make the box wider */
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+#message-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    width: calc(100% - 50px); /* make the input field smaller to make space for the send button */
+    box-sizing: border-box;
+}
+
+#send-button {
+    position: absolute;
+    right: 10px; /* position the send button to the right inside the input box */
+    bottom: 14px; /* position the send button to the bottom inside the input box */
+    width: 30px;
+    height: 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* My personal style for fonts will go her */
+
+#myStyle {
+    background-color: #42afff;
+    font-size: 13px;  /* this makes the text bigger */
+    font-weight: bold;  /* this makes the text bolder */
+    text-transform: uppercase;  /* this converts the text to uppercase */
+    letter-spacing: 2px;  /* this increases the space between letters */
+    font-family: 'Arial', sans-serif;  /* change this to use a different font */
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;  /* Adjust as needed */
+    margin-left: auto;  /* this moves the div to the right */
+    display: inline-block;  /* required for margin-left: auto to work */
+    width: 50px;  /* adjust as needed */
+    height: 50px;  /* adjust as needed */
+    border-radius: 50%;  /* this makes the div circular */
+    animation: rainbow 3s infinite;
+
+}
+
+
+/* Define the keyframes for the animation */
+@keyframes rainbow {
+    0% {box-shadow: 0 0 5px #ff0000;} /* red */
+    14% {box-shadow: 0 0 5px #ff7f00;} /* orange */
+    28% {box-shadow: 0 0 5px #ffff00;} /* yellow */
+    42% {box-shadow: 0 0 5px #00ff00;} /* green */
+    57% {box-shadow: 0 0 5px #0000ff;} /* blue */
+    71% {box-shadow: 0 0 5px #4b0082;} /* indigo */
+    85% {box-shadow: 0 0 5px #8f00ff;} /* violet */
+    100% {box-shadow: 0 0 5px #ff0000;} /* red */
+}
+

@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div id="sidebar">
+        <ul>
+            {% for post in posts %}
+                <li><a href="#" class="post-link" data-id="{{ post.id }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+<div id="parent-container">
+
+    <div id="post-content">
+        <!-- Post content will be loaded here -->
+    </div>
+
+
+    <div id="gpt-display">
+        <dive id="myStyle">
+           <p>O _ O</p>
+        </dive>
+           <div id="message-box">
+               <input type="text" id="message-input" placeholder="Send a message">
+               <button id="send-button"><b>></b></button>
+           </div>
+    </div>
+        
+        
+</div>
+    <script src="{% static 'post_list.js' %}"></script>
+</body>
+</html>

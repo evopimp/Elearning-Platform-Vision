@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Chat with GPT-3.5-turbo</h2>
+<style>
+  /* Button styles */
+  .glittery-button {
+  display: inline-block;
+  position: relative;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  }
+  
+  /* Animation effect */
+  .glittery-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(-45deg, rgba(255, 255, 255, 0.7) 33%, transparent 66%), repeating-radial-gradient(circle at center, #f00, #f00 5px, #ff0 5px, #ff0 10px);
+  background-size: 200% 200%;
+  background-position: 0 0;
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  animation: glittery 3s infinite;
+  pointer-events: none;
+  }
+  
+  /* Keyframe animation */
+  @keyframes glittery {
+  0% { opacity: 0; transform: rotate(0deg); }
+  25% { opacity: 1; transform: rotate(180deg); }
+  50% { opacity: 0; transform: rotate(360deg); }
+  }
+  </style>
+
+<input type="text" id="message" name="message">
+<button onclick="sendMessage()" class="glittery-button">Send</button>
+
+<p id="response"></p>
+
+<script>
+function sendMessage() {
+  var message = document.getElementById("message").value;
+  fetch('/api/chat/?message=' + message)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);  // Log the response data
+    document.getElementById("response").innerText = data.response;
+  });
+}
+
+</script>
+
+</body>
+</html>
