@@ -32,18 +32,53 @@ postLinks.forEach(link => {
 
 document.getElementById("send-button").addEventListener("click", function(){
     var message = document.getElementById("message-input").value;
+    var conversationArea = document.getElementById("Conv-Container"); // use a single container for the whole conversation
+
+    // Create a paragraph for the user's message and append it to the conversation area
+    var userMessage = document.createElement('p');
+    userMessage.classList.add('user-message'); // Add a class to style user messages differently
+    userMessage.innerHTML = message;
+    conversationArea.appendChild(userMessage);
+
     document.getElementById("message-input").value = '';
     fetch('api/chat/?message=' + message)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);  // Log the response data
-        var messageDisplay = document.getElementById("gpt-display");
-        var p = document.createElement('p');
-        p.textContent = data.response;
-        messageDisplay.appendChild(p);
-        document.getElementById("message-input").value = '';
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            var aiMessage = document.createElement('p');
+            aiMessage.classList.add('ai-message'); // Add a class to style AI messages differently
+            var responseText = data.response.replace(/\./g, '.<br>').replace(/\:/g, ':<br>');
+            aiMessage.innerHTML = responseText;
+            conversationArea.appendChild(aiMessage);
+        });
 });
+
+
+// document.getElementById("send-button").addEventListener("click", function(){
+//     var message = document.getElementById("message-input").value;
+//     var userMessage = document.getElementById("user-message");
+//     var grpah = document.createElement('p');
+//     grpah.innerHTML = message;
+//     userMessage.appendChild(grpah);
+//     console.log(userMessage);
+
+//     document.getElementById("message-input").value = '';
+//     fetch('api/chat/?message=' + message)
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data);  // Log the response data
+//         var messageDisplay = document.getElementById("gpt-text");
+//         var p = document.createElement('p');
+//         var responseText = data.response.replace(/\./g, '.<br>').replace(/\:/g, ':<br>');
+
+//         p.innerHTML = responseText;
+
+//         messageDisplay.appendChild(p);
+
+//     });
+// });
+
+
 // this function is used to create "enter" keypress listener so enter will work instead of clicking
 
 document.getElementById("message-input").addEventListener("keypress", function(event){
@@ -52,7 +87,7 @@ document.getElementById("message-input").addEventListener("keypress", function(e
     }
 });
 
-//to keep the link highlited in the left-side bar for titles 
+//to keep the link highlited in the left-side bar for the lessons tiltle 
 
 $(document).ready(function() {
     $('#sidebar ul li a').click(function() {
